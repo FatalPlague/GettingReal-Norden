@@ -15,7 +15,21 @@ namespace GettingRealNorden.Models
             admins = new List<Admin>();
         }
 
-        public Admin GetAdminById(int adminId)
+        public void AddNewAdmin(Admin admin)
+        {
+            Admin newAdmin = new Admin(admin.Username, admin.Password, admin.AdminId);
+            admins.Add(newAdmin);
+            
+        }
+        public Admin CreateAdmin(Admin admin)
+        {
+            Admin newAdmin = new Admin(admin.Username, admin.Password, admin.AdminId);
+            return newAdmin;
+
+        }
+
+
+        public Admin? GetAdminById(int adminId)
         {
             foreach (Admin admin in admins)
             {

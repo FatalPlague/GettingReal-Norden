@@ -8,17 +8,58 @@ namespace GettingRealNorden.Models
 {
     public class Newsletter
     {
-        public int NewsletterId { get;}
-        public string Title { get; set; }
-        public DateTime Date { get; set; }
-        public string CompanyName { get; }
-        public int AdminId { get; }
-        public List<string> News {  get; set; }
-        public List<string> NewsLinks { get; set; }
+        private int _newletterId;
+        public int NewsletterId { get { return _newletterId; } set { _newletterId = value; } }
+        private string _title;
+        
+        public string Title
+        {
+            get { return _title; }
+            set
+            {
+                if (value.GetType() != typeof(string))
+                {
+                    throw new ArgumentException(nameof(value), $"The type must be a string and not {value}");
+                }
+                _title = value;
+            }
+
+        }
+        private string _companyname;
+        public string CompanyName { get { return _companyname; }
+            set
+            {
+                if (value.GetType() != typeof(string))
+                {
+                    throw new ArgumentException(nameof(value), $"The type must be a string and not {value}");
+                }
+                _companyname = value;
+            }
+        }
+
+
+        private int _adminId;
+        public int AdminId { get {return _adminId; } set { _adminId = value;} }
+        private List<string> _news;
+        
+        public List<string> News { get { return _news; } set { _news = value; } }
+        
+        private List<string> _newslinks;
+        public List<string> NewsLinks { get { return _newslinks; } set { _newslinks = value; } }
+        
+        private DateTime _date;
+
+        public DateTime Date {
+        
+            get { return _date; }
+            set {
+                _date = value;
+                }  
+        }
 
         public Newsletter(string companyName, int adminId, int newsletterId)
         {
-            NewsletterId = newsletterId;
+            NewsletterId = _newletterId;
             Title = "";
             Date = DateTime.Now;
             CompanyName = companyName;

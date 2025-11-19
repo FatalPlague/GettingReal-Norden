@@ -20,23 +20,23 @@ namespace GettingRealNorden.Models
             return newsletters.Count;
         }
 
-        public int CreateNewsletter(int adminId,string companyName)
+        public int CreateNewsletter(Company company, Admin admin)
         {
             int id = Count() + 1;
-            newsletters.Add(new Newsletter(company, admin, id));
+            newsletters.Add(new Newsletter(company.Name, admin.AdminId, id));
             return id;
             
         }
-/*
-        public Company GetCompany(string CompanyName, CompanyRepository companyRepo)
+
+        public Company? GetCompany(string CompanyName, CompanyRepository companyRep, List<Company> companies, Company company)
         {
-            return companyRepo.GetCompanyByName(CompanyName);
+            return companyRep.GetCompanyByName(company, companies);
         }
 
-        public Admin GetAdmin(int adminId, AdminRepository adminRepo)
+        public Admin? GetAdmin(int adminId, AdminRepository adminRepo)
         {
             return adminRepo.GetAdminById(adminId);
         }
-*/
+
     }
 }

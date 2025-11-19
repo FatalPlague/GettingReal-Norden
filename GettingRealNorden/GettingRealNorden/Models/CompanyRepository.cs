@@ -15,25 +15,25 @@ namespace GettingRealNorden.Models
             companies = new List<Company>();
         }
 
-        public Company GetCompanyByName(string companyName)
+        public String? GetCompanysName(string companyName)
         {
             foreach (Company company in companies)
             {
                 if (company.Name == companyName)
                 {
-                    return company;
+                    return company.Name;
                 }
             }
             return null;
         }
 
-        public static Company GetCompanyById(int id)
+        public Company GetCompanyByName(Company givencompany, List<Company> companies)
         {
-            List<Company> temp;
-            temp = companies
+            String companyName = GetCompanysName(givencompany.Name);
+            
             foreach (Company company in companies)
             {
-                if (company.Name == companyName)
+                if (companyName == givencompany.Name)
                 {
                     return company;
                 }

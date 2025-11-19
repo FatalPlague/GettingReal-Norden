@@ -19,7 +19,7 @@ namespace GettingRealNorden.Models
                 }
                 _addminId = value;
             }
-            
+           
             
             }
         private string _username;
@@ -64,7 +64,7 @@ namespace GettingRealNorden.Models
 
 
 
-        private string password;
+        
 
         public Admin(string username, string password, int adminId)
         {
