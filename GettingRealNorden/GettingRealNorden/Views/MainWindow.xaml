@@ -7,24 +7,39 @@
         mc:Ignorable="d"
         Title="FlowLetter"
         WindowStyle="SingleBorderWindow"
-        WindowState="Maximized" d:DesignHeight="615.96" d:DesignWidth="1136.59"
+        WindowState="Maximized" d:DesignHeight="600" d:DesignWidth="1300"
+        WindowStartupLocation="CenterScreen"
         >
 
-    <Grid>
+    <Grid Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
-            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="10"/>
             <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
 
-        <Grid Grid.Column="0">
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="3" Background="#FF719AE7">
+
+        </Grid>
+
+        <Grid Grid.Column="0" Background="#FF4B4B9E">
             <Grid.RowDefinitions>
-                <RowDefinition Height="10*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="12*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <StackPanel Orientation="Horizontal">
-                
-            </StackPanel>  
+            <StackPanel Grid.Row="0" Orientation="Horizontal" >
+                <TextBlock x:Name="txtTitle" Foreground="White" Text="FLOWLETTER" FontSize="42" Width="200" FontFamily="Agency FB" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" FontStyle="Italic"/>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Orientation="Vertical" Background="#FF719AE7">
+                <Button x:Name="btn_Newsletter" Cursor="Hand" Content="NYHEDSBREV" FontSize="20" FontFamily="Microsoft YaHei UI" Height="50" Width="200" VerticalAlignment="Top" BorderBrush="White" Background="LightBlue" Click="btn_Newsletter_Click" />
+                <Button x:Name="btn_Members" Cursor="Hand" Content="MEDLEMMER" FontSize="20" FontFamily="Microsoft YaHei UI" Height="50" Width="200" BorderBrush="White" Background="LightBlue" Click="btn_Members_Click" />
+            </StackPanel>
+            <Button Content="Log Ud" Cursor="Hand" HorizontalAlignment="Left" Margin="20,0,0,0" Grid.Row="2" Foreground="#FF535353" VerticalAlignment="Center" FontWeight="bold" BorderThickness="2" Background="LightBlue" BorderBrush="LightBlue"/>
+            <Label Content="NORDEN Odense" HorizontalAlignment="Left" Margin="90,0,0,0" Grid.Row="2" VerticalAlignment="Center" FontWeight="ExtraBold" Foreground="white" FontStyle="Italic"/>
+
+
 
 
             <!--<ListBox Grid.Row="0">
@@ -36,6 +51,23 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>-->
-        </Grid> 
+        </Grid>
+        <Grid Grid.Column="2" Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="93"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+            <Button x:Name="btn_CreateNewsletterDialog" Content="Nyt Dokument" HorizontalAlignment="right" Height="20" Width=" 100" Margin="0,0,100,-50" Click="btn_CreateNewsletterDialog_Click" Foreground="Black" Background="LightBlue" BorderBrush="Black" Cursor="Hand" />
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="408*"/>
+                    <ColumnDefinition Width="37*"/>
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="txtNewsletterDraft" Text="Skriv noget tekst her" Cursor="IBeam" Background="White" BorderBrush="darkGray" VerticalAlignment="Center" HorizontalAlignment="Center" Height="350" Width="500" BorderThickness="3" Margin="0,0,0,0"/>
+            </Grid>
+        </Grid>
+
+
+
     </Grid>
 </Window>
