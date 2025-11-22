@@ -9,19 +9,23 @@ namespace GettingRealNorden.Models
     public class Admin
     {
         private int _addminId;
-        public int AdminId { get { 
-                
-                return _addminId; }  set
+        public int AdminId
+        {
+            get
             {
-                if(value.GetType() != typeof(int))
+                return _addminId;
+            }
+            set
+            {
+                if (value.GetType() != typeof(int))
                 {
                     throw new ArgumentException(nameof(value), $"The type must be a int and not {value}");
                 }
                 _addminId = value;
             }
-           
-            
-            }
+
+
+        }
         private string _username;
         public string Username
         {
@@ -64,7 +68,7 @@ namespace GettingRealNorden.Models
 
 
 
-        
+
 
         public Admin(string username, string password, int adminId)
         {
