@@ -98,6 +98,43 @@ namespace GettingRealNorden.Models
             User user = getUser(username);
             user.HasAces = false;
             }
+            public void RemoveUser(string username)
+            {
+            User user = getUser(username);
+            try
+            {   // Open the text file using a stream reader.
+                using (StreamReader sr = new StreamReader("Users.csv"))
+                {
+                    // Read the stream to a string, and instantiate a Person object
+                    string line = sr.ReadLine();
+
+                    while (line != null)
+                    {
+                        string[] parts = line.Split(',');
+
+                        // parts[0] contains first name, parts[1] contains last name, parts[2] contains age as text, parts[3] contains phone
+                        if (parts[0] == user.Username)
+                        {
+                            parts[0] = "";
+                            parts[1] = "";
+                            parts[2] = "";
+                        }
+                        
+                            
+
+                        //Read the next line
+                        line = sr.ReadLine();
+                    }
+                }
+            }
+            catch (IOException)
+            {
+                throw;
+            }
+
+
+
+        }
 
     }
    }
