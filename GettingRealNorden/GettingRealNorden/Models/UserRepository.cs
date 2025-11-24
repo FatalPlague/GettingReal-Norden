@@ -98,9 +98,9 @@ namespace GettingRealNorden.Models
             User user = getUser(username);
             user.HasAces = false;
             }
-            public void RemoveUser(string username)
+            public void Remove(User user)
             {
-            User user = getUser(username);
+
             try
             {   // Open the text file using a stream reader.
                 using (StreamReader sr = new StreamReader("Users.csv"))
@@ -119,8 +119,8 @@ namespace GettingRealNorden.Models
                             parts[1] = "";
                             parts[2] = "";
                         }
-                        
-                            
+
+
 
                         //Read the next line
                         line = sr.ReadLine();
@@ -131,6 +131,12 @@ namespace GettingRealNorden.Models
             {
                 throw;
             }
+        }
+        
+            public void RemoveUser(string username)
+            {
+            User user = getUser(username);
+            Remove(user);
 
 
 

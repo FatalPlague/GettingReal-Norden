@@ -53,5 +53,9 @@ namespace GettingRealNorden.Models
 
             
         }
-    }
+        public void RemoveUser(string username)
+        {
+            User user = getUser(username);
+            Remove(user);
+        }
 }
