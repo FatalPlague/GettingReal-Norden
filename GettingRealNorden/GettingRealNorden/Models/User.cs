@@ -37,6 +37,11 @@ namespace GettingRealNorden.Models
             Password=  password;
             HasAces = hasAces;
         }
+
+        public User()
+        {
+        }
+
         public bool NoAcessMore(User user)
         {
             return user.HasAces= false;
