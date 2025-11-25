@@ -9,14 +9,14 @@ namespace GettingRealNorden.Models
     public class Company
         
     {
-        private string _name;
-        //Backingfield for name
-        private string _address;
-        //Backingfield for address
-        private string _cvr;
-        //Backingfield for CVR number
-        private string _url;
-        //Backingfield for company URL
+        private string _name;           //Backingfield for name
+
+        private string _address;        //Backingfield for address
+
+        private string _cvr;            //Backingfield for CVR number
+
+        private string _url;            //Backingfield for company URL
+
 
         public string Name { get { return _name; } set { if (value.GetType() != typeof(string))
                 {

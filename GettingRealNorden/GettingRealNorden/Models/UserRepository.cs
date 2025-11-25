@@ -52,7 +52,7 @@ namespace GettingRealNorden.Models
                 {
                     Username = username,
                     Password = password,
-                    HasAces = Truevalue,
+                    HasAccess = Truevalue,
 
 
                 };
@@ -65,41 +65,41 @@ namespace GettingRealNorden.Models
 
             return result;
         }
-            public User? getUser(string username)
-            {
-            
+        public User? getUser(string username)
+        {
 
-            foreach(User user in users)
+
+            foreach (User user in users)
             {
-                if (user.Username ==  username)
+                if (user.Username == username)
                 {
                     return user;
                 }
             }
-                return null;
-             
-            }
+            return null;
 
-            public bool getBoolStatus(string username)
-            {
+        }
+
+        public bool getBoolStatus(string username)
+        {
             User user = getUser(username);
 
-            return user.HasAces;
-            }
+            return user.HasAccess;
+        }
 
-            public void setHasVlaueToTrue(string username)
-            {
+        public void setHasVlaueToTrue(string username)
+        {
             User user = getUser(username);
-            user.HasAces = true;
+            user.HasAccess = true;
 
-            }
-            public void setHasVlaueToFaluse(string username)
-            {
+        }
+        public void setHasVlaueToFaluse(string username)
+        {
             User user = getUser(username);
-            user.HasAces = false;
-            }
-            public void Remove(User user)
-            {
+            user.HasAccess = false;
+        }
+        public void Remove(User user)
+        {
 
             try
             {   // Open the text file using a stream reader.
@@ -132,9 +132,9 @@ namespace GettingRealNorden.Models
                 throw;
             }
         }
-        
-            public void RemoveUser(string username)
-            {
+
+        public void RemoveUser(string username)
+        {
             User user = getUser(username);
             Remove(user);
 
@@ -143,5 +143,5 @@ namespace GettingRealNorden.Models
         }
 
     }
-   }
+}
 

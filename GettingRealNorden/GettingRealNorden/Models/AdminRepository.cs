@@ -9,7 +9,7 @@ namespace GettingRealNorden.Models
     public class AdminRepository
     {
         private List<Admin> admins;         // internal list storing all admins
-        
+
         public AdminRepository()
         {
             admins = new List<Admin>();     // initialize the list when the repo is created
@@ -40,7 +40,7 @@ namespace GettingRealNorden.Models
         }
         public void RemoveUser(UserRepository userRepository, string username)
         {
-            
+
             User user = userRepository.getUser(username);
             userRepository.RemoveUser(username);
         }
@@ -56,8 +56,8 @@ namespace GettingRealNorden.Models
             }
             return null;
 
-            
+
         }
-        
-        }
+
+    }
 }

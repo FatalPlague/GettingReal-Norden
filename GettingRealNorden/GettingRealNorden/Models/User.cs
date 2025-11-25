@@ -22,7 +22,7 @@ namespace GettingRealNorden.Models
 
         }
         private bool _hasAcess = false;
-        public bool HasAces
+        public bool HasAccess
         {
             get { return _hasAcess; }
             set {
@@ -31,11 +31,11 @@ namespace GettingRealNorden.Models
             }
 
         }
-        public User(string username, string password, bool hasAces)
+        public User(string username, string password, bool hasAccess)
         {
             Username = username;
             Password=  password;
-            HasAces = hasAces;
+            HasAccess = hasAccess;
         }
 
         public User()
@@ -44,11 +44,11 @@ namespace GettingRealNorden.Models
 
         public bool NoAcessMore(User user)
         {
-            return user.HasAces= false;
+            return user.HasAccess= false;
         }
         public bool AcessNow(User user)
         {
-            return user.HasAces = true;
+            return user.HasAccess = true;
         }
 
     }
