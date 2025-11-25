@@ -28,7 +28,6 @@
                    FontSize="24"
                    FontWeight="ExtraBold"
                    FontStyle="Italic">
-
             </Label>
         </Grid>
         <Grid Grid.Row="1" Margin="20">
@@ -39,20 +38,23 @@
                            Margin="0,0,0,10"/>
                 <TextBox x:Name="txtNewsletterTitle"
                          Text="Nyhedsbrev Titel"
-                         Margin="0,0,0,10"/>
+                         Margin="0,0,0,10"
+                         Cursor="IBeam"/>
                 <TextBox x:Name="txtNewsletterContent"
                          Text="Nyhedsbrev Indhold"
                          MinHeight="200"
                          Height="350"
                          TextWrapping="Wrap"
+                         Cursor="IBeam"
                          VerticalScrollBarVisibility="Auto"
                          Margin="0,0,0,10"/>
                 <Button Content="Gem Nyhedsbrev"
                         Width="150"
                         Height="40"
+                        Cursor="Hand"
                         Background="#FF4B4B9E"
                         Foreground="White"
-                        FontWeight="Bold"/>
+                        FontWeight="Bold" />
             </StackPanel>
 
         </Grid>

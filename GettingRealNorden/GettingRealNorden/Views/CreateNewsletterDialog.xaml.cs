@@ -23,5 +23,7 @@ namespace GettingRealNorden.Views
         {
             InitializeComponent();
         }
+
+        
     }
 }

@@ -44,7 +44,7 @@
                     <Button x:Name="btn_Members" Cursor="Hand" Content="MEDLEMMER" FontSize="20" FontFamily="Microsoft YaHei UI" Height="50" Width="200" BorderBrush="White" Background="LightBlue" Click="btn_Members_Click" />
                 </StackPanel>
                 <Button Content="Log Ud" Cursor="Hand" HorizontalAlignment="Left" Margin="20,0,0,0" Grid.Row="2" Foreground="#FF535353" VerticalAlignment="Center" FontWeight="bold" BorderThickness="2" Background="LightBlue" BorderBrush="LightBlue"/>
-                <Label Content="NORDEN Odense" HorizontalAlignment="Left" Margin="80,0,0,0" Grid.Row="2" VerticalAlignment="Center" FontWeight="ExtraBold" Foreground="white" FontStyle="Italic"/>
+                <Label Content="NORDEN Odense(Databind company name hertil)" HorizontalAlignment="Left" Margin="80,0,0,0" Grid.Row="2" VerticalAlignment="Center" FontWeight="ExtraBold" Foreground="white" FontStyle="Italic"/>
 
                 <!--<ListBox Grid.Row="0">
                 <ListBox.ItemTemplate>
@@ -73,20 +73,24 @@
                 </Grid>
 
                 <Grid Grid.Row="1">
+                    
                     <Button x:Name="btn_CreateNewsletterDialog" 
                         Content="Nyt Dokument" 
                         HorizontalAlignment="Right" 
-                        Height="20" Width=" 100" Margin="0,45,171,426" 
+                        Height="20" Width=" 100" Margin="0,10,46,461" 
                         Click="btn_CreateNewsletterDialog_Click" 
                         Foreground="Black" Background="LightBlue" BorderBrush="Black" 
                         Cursor="Hand" />
 
                     <TextBox x:Name="txtNewsletterDraft" 
-                         Text="Databind Nyhedsbrev skrevet hertil" 
-                         Cursor="IBeam" 
+                         IsReadOnly="True"
+                         Cursor="Arrow"
+                         TextWrapping="Wrap"
+                         Text="{Binding Path=Text, ElementName=txtNewsletterContent, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" 
+                         VerticalScrollBarVisibility="Auto"
                          Background="White" BorderBrush="darkGray" 
                          VerticalAlignment="Center" HorizontalAlignment="Center" 
-                         Height="329" Width="579" 
+                         Height="329" Width="907" 
                          BorderThickness="3"/>
                 </Grid>
             </Grid>
