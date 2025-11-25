@@ -87,7 +87,7 @@ namespace GettingRealNorden.Models
             return user.HasAccess;
         }
 
-        public void setHasVlaueToTrue(string username)
+        public void setHasValueToTrue(string username)
         {
             User user = getUser(username);
             user.HasAccess = true;
