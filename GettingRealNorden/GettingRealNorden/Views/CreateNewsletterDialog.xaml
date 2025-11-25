@@ -5,8 +5,57 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GettingRealNorden.Views"
         mc:Ignorable="d"
-        Title="CreateNewsletterDialog" Height="450" Width="800">
-    <Grid>
-        
+        WindowState="Maximized"
+        WindowStartupLocation="CenterScreen"
+        Title="CreateNewsletterDialog" Height="700" Width="1000">
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" MinHeight="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto" MinHeight="50"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Background="#FF719AE7">
+            <Label Content="Databind company name hertil"
+                   Foreground="White"
+                   FontSize="24"
+                   FontWeight="ExtraBold"
+                   FontStyle="Italic">
+            </Label>
+        </Grid>
+        <Grid Grid.Row="2"  Background="#FF719AE7">
+            <Label Content="Databind Dato og tid hertil"
+                   Foreground="White"
+                   FontSize="24"
+                   FontWeight="ExtraBold"
+                   FontStyle="Italic">
+
+            </Label>
+        </Grid>
+        <Grid Grid.Row="1" Margin="20">
+            <StackPanel>
+                <TextBlock Text="Opret Nyhedsbrev"
+                           FontSize="20"
+                           FontWeight="Bold"
+                           Margin="0,0,0,10"/>
+                <TextBox x:Name="txtNewsletterTitle"
+                         Text="Nyhedsbrev Titel"
+                         Margin="0,0,0,10"/>
+                <TextBox x:Name="txtNewsletterContent"
+                         Text="Nyhedsbrev Indhold"
+                         MinHeight="200"
+                         Height="350"
+                         TextWrapping="Wrap"
+                         VerticalScrollBarVisibility="Auto"
+                         Margin="0,0,0,10"/>
+                <Button Content="Gem Nyhedsbrev"
+                        Width="150"
+                        Height="40"
+                        Background="#FF4B4B9E"
+                        Foreground="White"
+                        FontWeight="Bold"/>
+            </StackPanel>
+
+        </Grid>
     </Grid>
+
 </Window>

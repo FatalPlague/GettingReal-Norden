@@ -7,12 +7,12 @@
         mc:Ignorable="d"
         Title="FlowLetter"
         WindowStyle="SingleBorderWindow"
-        WindowState="Maximized" d:DesignHeight="600" d:DesignWidth="1400"
-        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized" d:DesignHeight="704"
+        WindowStartupLocation="CenterScreen" Width="1492"
         >
 
     <Viewbox Stretch="UniformToFill">
-        <Grid Background="White" Width="1400" >
+        <Grid Background="White" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="71*"/>
                 <RowDefinition Height="145*"/>
@@ -68,7 +68,7 @@
                           HorizontalAlignment="Center"
                           VerticalAlignment="Center"
                           Height="157"
-                          Width="1000"/> 
+                          Width="1000"/>
 
                 </Grid>
 
@@ -82,7 +82,7 @@
                         Cursor="Hand" />
 
                     <TextBox x:Name="txtNewsletterDraft" 
-                         Text="Nyhedsbrev udkast kommer her" 
+                         Text="Databind Nyhedsbrev skrevet hertil" 
                          Cursor="IBeam" 
                          Background="White" BorderBrush="darkGray" 
                          VerticalAlignment="Center" HorizontalAlignment="Center" 
