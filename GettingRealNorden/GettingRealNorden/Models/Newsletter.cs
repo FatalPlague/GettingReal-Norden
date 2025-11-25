@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace GettingRealNorden.Models
 {
@@ -11,7 +12,20 @@ namespace GettingRealNorden.Models
         private int _newletterId;
         public int NewsletterId { get { return _newletterId; } set { _newletterId = value; } }
         private string _title;
-        
+        private string _ImagePath;
+        private string _hyperLink;
+
+        public string HyperLink
+        {
+            get { return _hyperLink; }
+            set { _hyperLink = value; }
+        }
+
+        public string ImagePath
+        {
+            get { return _ImagePath; }
+            set {_ImagePath = value; }
+        }
         public string Title
         {
             get { return _title; }
@@ -57,7 +71,7 @@ namespace GettingRealNorden.Models
                 }  
         }
 
-        public Newsletter(string companyName, int adminId, int newsletterId)
+        public Newsletter(string companyName, int adminId, int newsletterId, string imagePath, string hyperLink)
         {
             NewsletterId = _newletterId;
             Title = "";
@@ -66,6 +80,8 @@ namespace GettingRealNorden.Models
             AdminId = adminId;
             News = new List<string>();
             NewsLinks = new List<string>();
+            ImagePath = imagePath;
+            HyperLink = hyperLink;
         }
     }
 

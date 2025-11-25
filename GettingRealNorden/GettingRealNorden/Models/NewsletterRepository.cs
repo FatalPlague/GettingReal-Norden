@@ -20,10 +20,10 @@ namespace GettingRealNorden.Models
             return newsletters.Count;
         }
 
-        public int CreateNewsletter(Company company, Admin admin)
+        public int CreateNewsletter(Company company, Admin admin, string imagePath, string hyperLink)
         {
             int id = Count() + 1;
-            newsletters.Add(new Newsletter(company.Name, admin.AdminId, id));
+            newsletters.Add(new Newsletter(company.Name, admin.AdminId, id, imagePath, hyperLink));
             return id;
             
         }
