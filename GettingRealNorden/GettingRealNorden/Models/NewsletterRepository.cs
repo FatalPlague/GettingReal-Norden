@@ -6,8 +6,18 @@ using System.Threading.Tasks;
 
 namespace GettingRealNorden.Models
 {
-    public class NewsletterRepository
+    public class NewsletterRepository : CsvRepository<Newsletter>
     {
+        protected override string Filename => "Newsletters.csv"; // CSV file name for newsletters
+
+        protected override Newsletter CreateFromCsv(string[] parts)
+        {
+            int adminId = int.Parse(parts[1]);             // Parse adminId from CSV
+            int newsletterId = int.Parse(parts[2]);       // Parse newsletterId from CSV
+
+            return new Newsletter(parts[0], adminId, newsletterId, parts[3], parts[4]); //Create and return Newsletter object
+        }
+
         private List<Newsletter> newsletters;
 
         public NewsletterRepository()

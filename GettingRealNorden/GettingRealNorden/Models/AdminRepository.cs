@@ -6,37 +6,46 @@ using System.Threading.Tasks;
 
 namespace GettingRealNorden.Models
 {
-    public class AdminRepository
+    public class AdminRepository : CsvRepository<Admin>
     {
-        private List<Admin> admins;         // internal list storing all admins
+        protected override string Filename => "Admins.csv"; // CSV file name for admins
+
+        protected override Admin CreateFromCsv(string[] parts)
+        {
+            int adminId = int.Parse(parts[2]);             // Parse adminId from CSV
+
+            return new Admin(parts[0], parts[1], adminId); // Create and return Admin object
+        }
+
+
+        private List<Admin> admins;                // internal list storing all admins
 
         public AdminRepository()
         {
-            admins = new List<Admin>();     // initialize the list when the repo is created
+            admins = new List<Admin>();            // initialize the list when the repo is created
         }
 
         public void AddNewAdmin(Admin admin)       //creating a new admin and adding it to the list
         {
             Admin newAdmin = new Admin(admin.Username, admin.Password, admin.AdminId);
             admins.Add(newAdmin);
-
         }
-        public Admin CreateAdmin(Admin admin)       //creating a new admin and returning it
+
+        public Admin CreateAdmin(Admin admin)      //creating a new admin and returning it
         {
             Admin newAdmin = new Admin(admin.Username, admin.Password, admin.AdminId);
             return newAdmin;
-
         }
 
-        public bool RemoveAdmin(int adminId)    //removing an admin from the list by adminId
+        public bool RemoveAdmin(int adminId)       //removing an admin from the list by adminId
         {
             Admin? adminToRemove = GetAdminById(adminId);
 
             if (adminToRemove == null)
             {
-                return false;                   //removes admin if found, else returns false
+                return false;                      //removes admin if found, else returns false
             }
-            return admins.Remove(adminToRemove);    //removes admin from list and returns true
+            return admins.Remove(adminToRemove);   //removes admin from list and returns true
         }
         public void RemoveUser(UserRepository userRepository, string username)
         {
@@ -51,7 +60,7 @@ namespace GettingRealNorden.Models
             {
                 if (admin.AdminId == adminId)       //goes through the list of admins to find admin by adminId
                 {
-                    return admin;       //returns the admin if found
+                    return admin;                   //returns the admin if found
                 }
             }
             return null;

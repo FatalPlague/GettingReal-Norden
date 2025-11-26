@@ -8,36 +8,21 @@ using System.Windows.Controls;
 
 namespace GettingRealNorden.Models
 {
-    public class UserRepository
+    public class UserRepository : CsvRepository<User>
     {
-        private List<User> users;
-        private void InitializeRepository()
+        protected override string Filename => "Users.csv"; // CSV file name for Users
+
+        protected override User CreateFromCsv(string[] parts)
         {
-            try
-            {   // Open the text file using a stream reader.
-                using (StreamReader sr = new StreamReader("Users.csv"))
-                {
-                    // Read the stream to a string, and instantiate a Person object
-                    string line = sr.ReadLine();
+            bool HasAccess = bool.Parse(parts[2]);             // Parse HasAccess from CSV
 
-                    while (line != null)
-                    {
-                        string[] parts = line.Split(',');
 
-                        // parts[0] contains first name, parts[1] contains last name, parts[2] contains age as text, parts[3] contains phone
-
-                        this.Add(parts[0], parts[1], bool.Parse(parts[2]));
-
-                        //Read the next line
-                        line = sr.ReadLine();
-                    }
-                }
-            }
-            catch (IOException)
-            {
-                throw;
-            }
+            return new User(parts[0], parts[1], HasAccess);      // Create and return User object
         }
+
+
+        private List<User> users;
+
         public User Add(string username, string password, bool Truevalue)
         {
             User result = null;
