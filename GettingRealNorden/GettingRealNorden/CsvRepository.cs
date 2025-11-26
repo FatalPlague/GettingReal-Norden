@@ -33,7 +33,7 @@ namespace GettingRealNorden
                     {
                         string[] parts = line.Split(',');              // split line into columns
 
-                        csv item = CreateFromCsv(parts);               // convert CSV row into T object
+                        csv item = CreateFromCsv(parts);               // convert CSV row into csv object
 
                         items.Add(item);                               // add object to internal list
 
