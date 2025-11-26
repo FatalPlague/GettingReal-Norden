@@ -85,36 +85,38 @@ namespace GettingRealNorden.Models
         }
         public void Remove(User user)
         {
+            string path = "Users.csv";
 
             try
-            {   // Open the text file using a stream reader.
-                using (StreamReader sr = new StreamReader("Users.csv"))
+            {
+                if (!File.Exists(path))
+                    return; // or throw, depending on what you want
+
+                string[] lines = File.ReadAllLines(path);
+                var newLines = new List<string>();
+
+                foreach (string line in lines)
                 {
-                    // Read the stream to a string, and instantiate a Person object
-                    string line = sr.ReadLine();
+                    if (string.IsNullOrWhiteSpace(line))
+                        continue;
 
-                    while (line != null)
+                    string[] parts = line.Split(',');
+
+                    // parts[0] = username, parts[1] = password, parts[2] = hasAccess
+                    if (parts.Length > 0 && parts[0] == user.Username)
                     {
-                        string[] parts = line.Split(',');
-
-                        // parts[0] contains first name, parts[1] contains last name, parts[2] contains age as text, parts[3] contains phone
-                        if (parts[0] == user.Username)
-                        {
-                            parts[0] = "";
-                            parts[1] = "";
-                            parts[2] = "";
-                        }
-
-
-
-                        //Read the next line
-                        line = sr.ReadLine();
+                        // Skip this line – effectively removing the user
+                        continue;
                     }
+
+                    newLines.Add(line);
                 }
+
+                File.WriteAllLines(path, newLines);
             }
             catch (IOException)
             {
-                throw;
+                throw; // rethrow or handle as needed
             }
         }
 
@@ -126,7 +128,13 @@ namespace GettingRealNorden.Models
 
 
         }
+        public UserRepository()
+        {
+            InitializeRepository();
 
+
+        }
+        
     }
 }
 
