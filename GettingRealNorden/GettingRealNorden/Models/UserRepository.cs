@@ -112,7 +112,7 @@ namespace GettingRealNorden.Models
                     {
                         string[] parts = line.Split(',');
 
-                        // parts[0] contains first name, parts[1] contains last name, parts[2] contains age as text, parts[3] contains phone
+                        // parts[0] contains username, parts[1] contains password, parts[2] contains hasAcess
                         if (parts[0] == user.Username)
                         {
                             parts[0] = "";
@@ -141,7 +141,13 @@ namespace GettingRealNorden.Models
 
 
         }
+        public UserRepository()
+        {
+            InitializeRepository();
 
+
+        }
+        
     }
 }
 
