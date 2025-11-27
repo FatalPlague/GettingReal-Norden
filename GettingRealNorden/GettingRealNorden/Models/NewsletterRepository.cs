@@ -15,7 +15,7 @@ namespace GettingRealNorden.Models
             int adminId = int.Parse(parts[1]);             // Parse adminId from CSV
             int newsletterId = int.Parse(parts[2]);       // Parse newsletterId from CSV
 
-            return new Newsletter(parts[0], adminId, newsletterId); //Create and return Newsletter object
+            return new Newsletter(parts[0], adminId, newsletterId, parts[3], parts[4], parts[5], parts[6]); //Create and return Newsletter object
         }
 
         private List<Newsletter> newsletters;
@@ -30,7 +30,7 @@ namespace GettingRealNorden.Models
             return newsletters.Count;
         }
 
-        public int CreateNewsletter(Company company, Admin admin, string imagePath, string hyperLink)
+        public int CreateNewsletter(Company company, Admin admin)
         {
             int id = Count() + 1;
             newsletters.Add(new Newsletter(company.Name, admin.AdminId, id));
@@ -38,12 +38,12 @@ namespace GettingRealNorden.Models
             
         }
 
-        public Company? GetCompany(string CompanyName, CompanyRepository companyRep, List<Company> companies, Company company)
+        public Company GetCompany(string CompanyName, CompanyRepository companyRep, List<Company> companies, Company company)
         {
             return companyRep.GetCompanyByName(company, companies);
         }
 
-        public Admin? GetAdmin(int adminId, AdminRepository adminRepo)
+        public Admin GetAdmin(int adminId, AdminRepository adminRepo)
         {
             return adminRepo.GetAdminById(adminId);
         }

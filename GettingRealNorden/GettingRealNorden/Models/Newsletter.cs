@@ -9,8 +9,8 @@ namespace GettingRealNorden.Models
 {
     public class Newsletter
     {
-        private int _newletterId;
-        public int NewsletterId { get { return _newletterId; } set { _newletterId = value; } }
+        private int _newsletterId;
+        public int NewsletterId { get { return _newsletterId; } set { _newsletterId = value; } }
         private string _title;
         private string _ImagePath;
 
@@ -32,15 +32,15 @@ namespace GettingRealNorden.Models
             }
 
         }
-        private string _companyname;
-        public string CompanyName { get { return _companyname; }
+        private string _companyName;
+        public string CompanyName { get { return _companyName; }
             set
             {
                 if (value.GetType() != typeof(string))
                 {
                     throw new ArgumentException(nameof(value), $"The type must be a string and not {value}");
                 }
-                _companyname = value;
+                _companyName = value;
             }
         }
 
@@ -54,7 +54,7 @@ namespace GettingRealNorden.Models
         private string _newslink;
         public string NewsLink { get { return _newslink; } set { _newslink = value; } }
         
-        private DateTime _date;
+        private DateTime _date = DateTime.Now;
 
         public DateTime Date {
         
@@ -64,14 +64,20 @@ namespace GettingRealNorden.Models
                 }  
         }
 
-        public Newsletter(string companyName, int adminId, int newsletterId)
+        public Newsletter(string companyName, int adminId, int newsletterId, string news, string title, string imagePath, string newsLink)
         {
-            NewsletterId = _newletterId;
-            Title = "Hej";
-            Date = DateTime.Now;
             CompanyName = companyName;
-            News = "Indtast nyhed her";
             AdminId = adminId;
+            NewsletterId = newsletterId;
+            News = news;
+            Title = title;
+            ImagePath = imagePath;
+            NewsLink = newsLink;
+        }
+
+        public Newsletter(string companyName, int adminId, int newsletterId) :
+        this(companyName, adminId, newsletterId, "", "", "", "")
+        {
         }
     }
 

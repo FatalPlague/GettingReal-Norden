@@ -24,7 +24,7 @@ namespace GettingRealNorden.ViewModels
             NewsletterVMs = new ObservableCollection<NewsletterViewModel>();
 
             //test
-            newsletterRepo.CreateNewsletter(new Company("Norden", "Danmark", "12345678", "http://googele.dk"), new Admin("Martin", "123456789", 1), "hej", "hej");
+            newsletterRepo.CreateNewsletter(new Company("Norden", "Danmark", "12345678", "http://googele.dk"), new Admin("Martin", "123456789", 1));
 
             foreach(Newsletter newsletter in newsletterRepo.GetAll())
             {
