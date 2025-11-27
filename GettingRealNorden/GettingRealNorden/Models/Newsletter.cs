@@ -11,7 +11,7 @@ namespace GettingRealNorden.Models
     {
         private int _newletterId;
         public int NewsletterId { get { return _newletterId; } set { _newletterId = value; } }
-        private string _title;
+        private string _title = "hej";
         private string _ImagePath;
         private string _hyperLink;
 

@@ -25,5 +25,8 @@ namespace GettingRealNorden.ViewModels
         {
             this.newsletter = newsletter;
         }
+
+
+
     }
 }

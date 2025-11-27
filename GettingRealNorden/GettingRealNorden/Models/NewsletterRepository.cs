@@ -48,5 +48,10 @@ namespace GettingRealNorden.Models
             return adminRepo.GetAdminById(adminId);
         }
 
+        public List<Newsletter> GetAll()
+        {
+            return newsletters;
+        }
+
     }
 }
