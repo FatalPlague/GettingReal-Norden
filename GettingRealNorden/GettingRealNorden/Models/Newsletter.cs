@@ -11,15 +11,8 @@ namespace GettingRealNorden.Models
     {
         private int _newletterId;
         public int NewsletterId { get { return _newletterId; } set { _newletterId = value; } }
-        private string _title = "hej";
+        private string _title;
         private string _ImagePath;
-        private string _hyperLink;
-
-        public string HyperLink
-        {
-            get { return _hyperLink; }
-            set { _hyperLink = value; }
-        }
 
         public string ImagePath
         {
@@ -54,12 +47,12 @@ namespace GettingRealNorden.Models
 
         private int _adminId;
         public int AdminId { get {return _adminId; } set { _adminId = value;} }
-        private List<string> _news;
+        private string _news;
         
-        public List<string> News { get { return _news; } set { _news = value; } }
+        public string News { get { return _news; } set { _news = value; } }
         
-        private List<string> _newslinks;
-        public List<string> NewsLinks { get { return _newslinks; } set { _newslinks = value; } }
+        private string _newslink;
+        public string NewsLink { get { return _newslink; } set { _newslink = value; } }
         
         private DateTime _date;
 
@@ -71,17 +64,14 @@ namespace GettingRealNorden.Models
                 }  
         }
 
-        public Newsletter(string companyName, int adminId, int newsletterId, string imagePath, string hyperLink)
+        public Newsletter(string companyName, int adminId, int newsletterId)
         {
             NewsletterId = _newletterId;
-            Title = "";
+            Title = "Hej";
             Date = DateTime.Now;
             CompanyName = companyName;
+            News = "Indtast nyhed her";
             AdminId = adminId;
-            News = new List<string>();
-            NewsLinks = new List<string>();
-            ImagePath = imagePath;
-            HyperLink = hyperLink;
         }
     }
 

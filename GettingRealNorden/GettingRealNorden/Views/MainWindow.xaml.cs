@@ -8,7 +8,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using GettingRealNorden.ViewModels;
 using GettingRealNorden.Views;
+
 
 namespace GettingRealNorden
 {
@@ -17,9 +19,12 @@ namespace GettingRealNorden
     /// </summary>
     public partial class MainWindow : Window
     {
+        MainViewModel mvm;
         public MainWindow()
         {
+            mvm = new MainViewModel();
             InitializeComponent();
+            DataContext = mvm;
             btn_Newsletter.IsEnabled = false;
         }
 

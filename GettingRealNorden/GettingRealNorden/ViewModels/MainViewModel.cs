@@ -14,6 +14,7 @@ namespace GettingRealNorden.ViewModels
         private CompanyRepository companyRepo;
         private NewsletterRepository newsletterRepo;
         public ObservableCollection<NewsletterViewModel> NewsletterVMs;
+        public NewsletterViewModel SelectedNewsletter {  get; set; }
 
         public MainViewModel()
         {
@@ -21,10 +22,15 @@ namespace GettingRealNorden.ViewModels
             companyRepo = new CompanyRepository();
             newsletterRepo = new NewsletterRepository();
             NewsletterVMs = new ObservableCollection<NewsletterViewModel>();
+
+            //test
+            newsletterRepo.CreateNewsletter(new Company("Norden", "Danmark", "12345678", "http://googele.dk"), new Admin("Martin", "123456789", 1), "hej", "hej");
+
             foreach(Newsletter newsletter in newsletterRepo.GetAll())
             {
                 NewsletterVMs.Add(new NewsletterViewModel(newsletter));
             }
+            SelectedNewsletter = NewsletterVMs[0];
         }
 
         //public Company GetCompany(string CompanyName)

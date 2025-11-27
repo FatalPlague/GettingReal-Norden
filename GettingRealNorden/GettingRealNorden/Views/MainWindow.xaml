@@ -87,7 +87,7 @@
                          IsReadOnly="True"
                          Cursor="Arrow"
                          TextWrapping="Wrap"
-                         Text="{Binding Path=Text}" 
+                         Text="{Binding Path=SelectedNewsletter.Title}" 
                          VerticalScrollBarVisibility="Auto"
                          Background="White" BorderBrush="darkGray" 
                          VerticalAlignment="Center" HorizontalAlignment="Center" 

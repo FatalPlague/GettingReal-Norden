@@ -41,17 +41,17 @@ namespace GettingRealNorden.Models
                 }
                 int i = 0;
                 char c;
-                while (value[i] != 0)
-                {
-                    c = (value[i]);
-                    bool charDigit = char.IsDigit(c);
-                    if(charDigit ==  false)
-                    {
-                        throw new ArgumentException(nameof(value), $"The CVR: {value} must be digits");
-                    }
+                //while (value[i] != 0 && i < value.Length)
+                //{
+                //    c = (value[i]);
+                //    bool charDigit = char.IsDigit(c);
+                //    if(charDigit ==  false)
+                //    {
+                //        throw new ArgumentException(nameof(value), $"The CVR: {value} must be digits");
+                //    }
                     
-                    i++;
-                }
+                //    i++;
+                //}
                 /* The loop goes through all characters in the string, and if the characters are digits, CVR is set. If the characters are
                 not digits, an exception is thrown. */
 

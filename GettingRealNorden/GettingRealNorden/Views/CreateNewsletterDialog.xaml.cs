@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GettingRealNorden.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,11 +20,15 @@ namespace GettingRealNorden.Views
     /// </summary>
     public partial class CreateNewsletterDialog : Window
     {
+        MainViewModel mvm;
         public CreateNewsletterDialog()
         {
+            mvm = new MainViewModel();
             InitializeComponent();
+            DataContext = mvm;
+
         }
 
-        
+
     }
 }

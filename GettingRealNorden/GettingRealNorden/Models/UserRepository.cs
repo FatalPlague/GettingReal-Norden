@@ -130,7 +130,7 @@ namespace GettingRealNorden.Models
         }
         public UserRepository()
         {
-            InitializeRepository();
+            //InitializeRepository();
 
 
         }
