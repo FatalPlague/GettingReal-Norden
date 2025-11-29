@@ -8,20 +8,42 @@ using System.Windows.Controls;
 
 namespace GettingRealNorden.Models
 {
-    public class UserRepository : CsvRepository<User>
+    public class UserRepository : IRepository
     {
-        protected override string Filename => "Users.csv"; // CSV file name for Users
+        public string FileName { get; }
+        private List<User> users;                // internal list storing all admins
 
-        protected override User CreateFromCsv(string[] parts)
+        public UserRepository(string fileName)
         {
-            bool HasAccess = bool.Parse(parts[2]);             // Parse HasAccess from CSV
-
-
-            return new User(parts[0], parts[1], HasAccess);      // Create and return User object
+            FileName = fileName;
+            users = new List<User>();            // initialize the list when the repo is created
+            InitializeRepo();
         }
 
+        public void InitializeRepo()
+        {
+            try
+            {
+                using (StreamReader sr = new StreamReader(FileName))
+                {
+                    while (!sr.EndOfStream)
+                    {
+                        string[] stringArr = sr.ReadLine().Split(";");
 
-        private List<User> users;
+                        User user = new User(
+                            stringArr[0],
+                            stringArr[1],
+                            bool.Parse(stringArr[2]));
+
+                        users.Add(user);
+                    }
+                }
+            }
+            catch
+            {
+                throw new ArgumentException("Something went wrong");
+            }
+        }
 
         public User Add(string username, string password, bool Truevalue)
         {

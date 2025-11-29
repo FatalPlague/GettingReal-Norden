@@ -1,29 +1,50 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace GettingRealNorden.Models
 {
-    public class CompanyRepository : CsvRepository<Company>
+    public class CompanyRepository : IRepository
     {
+        public string FileName { get; }
+        private List<Company> companies;
 
-        protected override string Filename => "Companies.csv"; // CSV file name for admins
-
-        protected override Company CreateFromCsv(string[] parts)
+        public CompanyRepository(string fileName)
         {
-
-            return new Company(parts[0], parts[1], parts[2], parts[3]); // Create and return Company object
+            FileName = fileName;
+            companies = new List<Company>();
+            InitializeRepo();
 
         }
 
-
-        private List<Company> companies = new List<Company>();
-
-        public CompanyRepository()
+        public void InitializeRepo()
         {
-            companies = new List<Company>();
+            try
+            {
+                using (StreamReader sr = new StreamReader(FileName))
+                {
+                    while (!sr.EndOfStream)
+                    {
+                        string[] stringArr = sr.ReadLine().Split(";");
+
+                        Company company = new Company(
+                            stringArr[0],
+                            stringArr[1],
+                            stringArr[2],
+                            stringArr[3]);
+
+                        companies.Add(company);
+                    }
+                }
+            }
+            catch
+            {
+                throw new ArgumentException("Something went wrong");
+            }
+
         }
 
         public String? GetCompanysName(string companyName)

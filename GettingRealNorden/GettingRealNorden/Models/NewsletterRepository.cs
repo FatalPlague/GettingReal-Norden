@@ -1,30 +1,70 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace GettingRealNorden.Models
 {
-    public class NewsletterRepository : CsvRepository<Newsletter>
+    public class NewsletterRepository : IRepository
     {
-        protected override string Filename => "Newsletters.csv"; // CSV file name for newsletters
-
-        protected override Newsletter CreateFromCsv(string[] parts)
-        {
-            int adminId = int.Parse(parts[1]);             // Parse adminId from CSV
-            int newsletterId = int.Parse(parts[2]);       // Parse newsletterId from CSV
-
-            return new Newsletter(parts[0], adminId, newsletterId, parts[3], parts[4], parts[5], parts[6]); //Create and return Newsletter object
-        }
-
+        public string FileName { get; }
         private List<Newsletter> newsletters;
 
-        public NewsletterRepository()
+        public NewsletterRepository(string fileName)
         {
+            FileName = fileName;
             newsletters = new List<Newsletter>();
+
         }
 
+        public void InitializeRepo()
+        {
+            try
+            {
+                using (StreamReader sr = new StreamReader(FileName))
+                {
+                    while (!sr.EndOfStream)
+                    {
+                        string[] stringArr = sr.ReadLine().Split(";");
+
+                        Newsletter newsletter = new Newsletter(
+                            stringArr[0],
+                            int.Parse(stringArr[1]),
+                            int.Parse(stringArr[2]),
+                            stringArr[3],
+                            stringArr[4],
+                            stringArr[5],
+                            stringArr[6]);
+
+                        newsletters.Add(newsletter);
+                    }
+                }
+            }
+            catch
+            {
+                throw new ArgumentException("Something went wrong");
+            }
+        }
+
+        public void SaveNewsletters()
+        {
+            using (StreamWriter sw = new StreamWriter(FileName))
+            {
+                foreach (Newsletter newsletter in newsletters)
+                {
+                    sw.WriteLine(newsletter.ToString());
+                }
+
+            }
+        }
+
+        public void LoadNewsletters()
+        {
+            newsletters.Clear();
+            InitializeRepo();
+        }
         public int Count()
         {
             return newsletters.Count;

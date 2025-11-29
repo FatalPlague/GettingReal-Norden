@@ -79,6 +79,11 @@ namespace GettingRealNorden.Models
         this(companyName, adminId, newsletterId, "", "", "", "")
         {
         }
+
+        public override string ToString()
+        {
+            return $"{CompanyName};{AdminId};{NewsletterId};{News};{Title};{ImagePath};{NewsLink}";
+        }
     }
 
 }

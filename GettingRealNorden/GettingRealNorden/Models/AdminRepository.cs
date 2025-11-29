@@ -1,28 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace GettingRealNorden.Models
 {
-    public class AdminRepository : CsvRepository<Admin>
+    public class AdminRepository : IRepository
     {
-        protected override string Filename => "Admins.csv"; // CSV file name for admins
-
-        protected override Admin CreateFromCsv(string[] parts)
-        {
-            int adminId = int.Parse(parts[2]);             // Parse adminId from CSV
-
-            return new Admin(parts[0], parts[1], adminId); // Create and return Admin object
-        }
-
-
+        public string FileName { get; }
         private List<Admin> admins;                // internal list storing all admins
 
-        public AdminRepository()
+        public AdminRepository(string fileName)
         {
+            FileName = fileName;
             admins = new List<Admin>();            // initialize the list when the repo is created
+            InitializeRepo();
+        }
+
+        public void InitializeRepo()
+        {
+            try
+            {
+                using (StreamReader sr = new StreamReader(FileName))
+                {
+                    while (!sr.EndOfStream)
+                    {
+                        string[] stringArr = sr.ReadLine().Split(";");
+
+                        Admin admin = new Admin(
+                            stringArr[0],
+                            stringArr[1],
+                            int.Parse(stringArr[2]));
+
+                        admins.Add(admin);
+                    }
+                }
+            }
+            catch
+            {
+                throw new ArgumentException("Something went wrong");
+            }
         }
 
         public void AddNewAdmin(Admin admin)       //creating a new admin and adding it to the list
