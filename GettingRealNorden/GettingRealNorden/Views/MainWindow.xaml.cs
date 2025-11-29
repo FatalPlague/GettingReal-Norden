@@ -45,7 +45,7 @@ namespace GettingRealNorden
             if (createNewsletterDialog.ShowDialog() == true) //If the Newsletter dialog is closed/false it shows the main window again
             {
                 mvm.LoadNewsletters();
-                mvm.SelectedNewsletter = mvm.NewsletterVMs[mvm.NewsletterVMs
+                mvm.SelectedNewsletter = mvm.NewsletterVMs[mvm.NewsletterVMs.Count - 1];
                 this.Show(); //this refers to the active window/class
                 
             }
