@@ -45,7 +45,7 @@ namespace GettingRealNorden.Models
             }
         }
 
-        public User Add(string username, string password, bool Truevalue)
+        public User Add(string username, string password, bool hasAccess)
         {
             User result = null;
 
@@ -59,7 +59,7 @@ namespace GettingRealNorden.Models
                 {
                     Username = username,
                     Password = password,
-                    HasAccess = Truevalue,
+                    HasAccess = hasAccess,
 
 
                 };
@@ -72,7 +72,7 @@ namespace GettingRealNorden.Models
 
             return result;
         }
-        public User? getUser(string username)
+        public User GetUser(string username)
         {
 
 
@@ -87,22 +87,22 @@ namespace GettingRealNorden.Models
 
         }
 
-        public bool getBoolStatus(string username)
+        public bool GetAccesStatus(string username)
         {
-            User user = getUser(username);
+            User user = GetUser(username);
 
             return user.HasAccess;
         }
 
-        public void setHasValueToTrue(string username)
+        public void SetHasAccessToTrue(string username)
         {
-            User user = getUser(username);
+            User user = GetUser(username);
             user.HasAccess = true;
 
         }
-        public void setHasVlaueToFaluse(string username)
+        public void SetHasVlaueToFalse(string username)
         {
-            User user = getUser(username);
+            User user = GetUser(username);
             user.HasAccess = false;
         }
         public void Remove(User user)
@@ -144,19 +144,9 @@ namespace GettingRealNorden.Models
 
         public void RemoveUser(string username)
         {
-            User user = getUser(username);
+            User user = GetUser(username);
             Remove(user);
-
-
-
         }
-        public UserRepository()
-        {
-            //InitializeRepository();
-
-
-        }
-        
     }
 }
 

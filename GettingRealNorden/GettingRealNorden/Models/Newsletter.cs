@@ -54,7 +54,7 @@ namespace GettingRealNorden.Models
         private string _newslink;
         public string NewsLink { get { return _newslink; } set { _newslink = value; } }
         
-        private DateTime _date = DateTime.Now;
+        private DateTime _date;
 
         public DateTime Date {
         
@@ -73,6 +73,7 @@ namespace GettingRealNorden.Models
             Title = title;
             ImagePath = imagePath;
             NewsLink = newsLink;
+            Date = DateTime.Now;
         }
 
         public Newsletter(string companyName, int adminId, int newsletterId) :

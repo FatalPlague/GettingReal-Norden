@@ -29,6 +29,11 @@ namespace GettingRealNorden.ViewModels
                 OnPropertyChanged("SelectedNewsletter");
             }
         }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        public ICommand SaveNewsletterCommand { get; } = new SaveNewsletterCommand();
+
         public MainViewModel()
         {
             adminRepo = new AdminRepository("Resources/Admins.csv");
@@ -72,9 +77,6 @@ namespace GettingRealNorden.ViewModels
         //    return adminRepo.GetAdminById(adminId);
         //}
 
-        public ICommand SaveNewsletterCommand { get; } = new SaveNewsletterCommand();
-
-        public event PropertyChangedEventHandler? PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string? propertyName = null)
                 => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 

@@ -34,7 +34,7 @@ namespace GettingRealNorden.Models
         public User(string username, string password, bool hasAccess)
         {
             Username = username;
-            Password=  password;
+            Password =  password;
             HasAccess = hasAccess;
         }
 

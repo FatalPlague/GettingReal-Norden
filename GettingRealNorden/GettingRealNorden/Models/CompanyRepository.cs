@@ -47,7 +47,7 @@ namespace GettingRealNorden.Models
 
         }
 
-        public String? GetCompanysName(string companyName)
+        public String GetCompanyName(string companyName)
         {
             foreach (Company company in companies)
             {
@@ -61,7 +61,7 @@ namespace GettingRealNorden.Models
 
         public Company GetCompanyByName(Company givencompany, List<Company> companies)
         {
-            String companyName = GetCompanysName(givencompany.Name);
+            String companyName = GetCompanyName(givencompany.Name);
 
             foreach (Company company in companies)
             {

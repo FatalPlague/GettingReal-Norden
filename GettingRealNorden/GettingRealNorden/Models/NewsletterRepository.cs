@@ -78,9 +78,9 @@ namespace GettingRealNorden.Models
             
         }
 
-        public Company GetCompany(string CompanyName, CompanyRepository companyRep, List<Company> companies, Company company)
+        public Company GetCompany(string ompanyName, CompanyRepository companyRepo, List<Company> companies, Company company)
         {
-            return companyRep.GetCompanyByName(company, companies);
+            return companyRepo.GetCompanyByName(company, companies);
         }
 
         public Admin GetAdmin(int adminId, AdminRepository adminRepo)

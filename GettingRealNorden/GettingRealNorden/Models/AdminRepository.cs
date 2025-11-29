@@ -66,14 +66,14 @@ namespace GettingRealNorden.Models
             }
             return admins.Remove(adminToRemove);   //removes admin from list and returns true
         }
-        public void RemoveUser(UserRepository userRepository, string username)
-        {
+        //public void RemoveUser(UserRepository userRepository, string username)
+        //{
 
-            User user = userRepository.getUser(username);
-            userRepository.RemoveUser(username);
-        }
+        //    User user = userRepository.getUser(username);
+        //    userRepository.RemoveUser(username);
+        //}
 
-        public Admin? GetAdminById(int adminId)
+        public Admin GetAdminById(int adminId)
         {
             foreach (Admin admin in admins)
             {
