@@ -2,25 +2,37 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace GettingRealNorden.ViewModels
 {
-    public class MainViewModel
+    public class MainViewModel : INotifyPropertyChanged
     {
         private AdminRepository adminRepo;
         private CompanyRepository companyRepo;
         private NewsletterRepository newsletterRepo;
         public ObservableCollection<NewsletterViewModel> NewsletterVMs;
-        public NewsletterViewModel SelectedNewsletter {  get; set; }
 
+        private NewsletterViewModel selectedNewsletter;
+        public NewsletterViewModel SelectedNewsletter
+        {
+            get { return selectedNewsletter; }
+            set
+            {
+                selectedNewsletter = value;
+                OnPropertyChanged("SelectedNewsletter");
+            }
+        }
         public MainViewModel()
         {
-            adminRepo = new AdminRepository();
-            companyRepo = new CompanyRepository();
-            newsletterRepo = new NewsletterRepository();
+            adminRepo = new AdminRepository("Resources/Admins.csv");
+            companyRepo = new CompanyRepository("Resources/Companies.csv");
+            newsletterRepo = new NewsletterRepository("Resources/Newsletters.csv");
+            
             NewsletterVMs = new ObservableCollection<NewsletterViewModel>();
 
             //test
@@ -42,6 +54,10 @@ namespace GettingRealNorden.ViewModels
         //{
         //    return adminRepo.GetAdminById(adminId);
         //}
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+                => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
     }
 
