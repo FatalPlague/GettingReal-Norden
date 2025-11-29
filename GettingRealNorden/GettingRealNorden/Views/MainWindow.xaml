@@ -55,7 +55,7 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>-->
-            
+
             </Grid>
             <Grid Grid.Column="2" Grid.Row="0">
                 <Grid.RowDefinitions>
@@ -74,29 +74,29 @@
                 </Grid>
 
                 <Grid Grid.Row="1">
-                    
-                        <Button x:Name="btn_CreateNewsletterDialog" 
+
+                    <Button x:Name="btn_CreateNewsletterDialog" 
                         Content="Nyt Dokument" 
                         HorizontalAlignment="Right" 
                         Height="20" Width=" 100" Margin="0,10,46,461" 
                         Click="btn_CreateNewsletterDialog_Click" 
                         Foreground="Black" Background="LightBlue" BorderBrush="Black" 
                         Cursor="Hand" />
-                    
-                        <TextBox x:Name="txtNewsletterDraft" 
+
+                    <TextBox x:Name="txtNewsletterDraft" 
                          IsReadOnly="True"
                          Cursor="Arrow"
                          TextWrapping="Wrap"
-                         Text="{Binding Path=SelectedNewsletter.Title}" 
+                         Text="{Binding Path=SelectedNewsletter.News}" 
                          VerticalScrollBarVisibility="Auto"
                          Background="White" BorderBrush="darkGray" 
-                         VerticalAlignment="Center" HorizontalAlignment="Center" 
-                         Height="329" Width="907" 
-                         BorderThickness="3" />
-                    <Label Content="{Binding Path=Text}" HorizontalAlignment="Center" Margin="0,51,0,0" VerticalAlignment="Top" Width="907"/>
-                   
+                         VerticalAlignment="Top" HorizontalAlignment="Center" 
+                         Height="329" Width="908" 
+                         BorderThickness="3" Margin="0,111,0,0" />
+                    <Label Content="{Binding Path=SelectedNewsletter.Title}" HorizontalAlignment="Center" Margin="0,51,0,0" VerticalAlignment="Top" Width="908" Height="39"/>
+
                 </Grid>
-                
+
             </Grid>
 
         </Grid>

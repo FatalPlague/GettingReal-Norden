@@ -15,7 +15,7 @@
             <RowDefinition Height="Auto" MinHeight="50"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Background="#FF719AE7">
-            <Label Content="Databind company name hertil"
+            <Label Content="{Binding Path=SelectedNewsletter.CompanyName}"
                    Foreground="White"
                    FontSize="24"
                    FontWeight="ExtraBold"
@@ -23,7 +23,7 @@
             </Label>
         </Grid>
         <Grid Grid.Row="2"  Background="#FF719AE7">
-            <Label Content="Databind Dato og tid hertil"
+            <Label Content="{Binding Path=SelectedNewsletter.Date}"
                    Foreground="White"
                    FontSize="24"
                    FontWeight="ExtraBold"
@@ -39,7 +39,7 @@
                 <TextBox x:Name="txtNewsletterTitle"
                          Text="{Binding Path=SelectedNewsletter.Title}"
                          Margin="0,0,0,10"
-                         Cursor="IBeam"/>
+                         Cursor="IBeam" Height="30"/>
                 <TextBox x:Name="txtNewsletterContent"
                          Text="{Binding Path=SelectedNewsletter.News}"
                          MinHeight="200"
@@ -49,12 +49,14 @@
                          VerticalScrollBarVisibility="Auto"
                          Margin="0,0,0,10"/>
                 <Button Content="Gem Nyhedsbrev"
+                        Command="{Binding Path=SaveNewsletterCommand}"
+                        CommandParameter="{Binding}"
                         Width="150"
                         Height="40"
                         Cursor="Hand"
                         Background="#FF4B4B9E"
                         Foreground="White"
-                        FontWeight="Bold" />
+                        FontWeight="Bold" Click="Button_Click" />
             </StackPanel>
 
         </Grid>

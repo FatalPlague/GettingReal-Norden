@@ -42,8 +42,10 @@ namespace GettingRealNorden
         {
             CreateNewsletterDialog createNewsletterDialog = new CreateNewsletterDialog();
             this.Hide(); //Hides MainWindow when btn_CreateNewsletterDialog_Click is initialized
-            if (createNewsletterDialog.ShowDialog() == false) //If the Newsletter dialog is closed/false it shows the main window again
+            if (createNewsletterDialog.ShowDialog() == true) //If the Newsletter dialog is closed/false it shows the main window again
             {
+                mvm.LoadNewsletters();
+                mvm.SelectedNewsletter = mvm.NewsletterVMs[mvm.NewsletterVMs
                 this.Show(); //this refers to the active window/class
                 
             }
