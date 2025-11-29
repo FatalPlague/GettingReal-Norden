@@ -22,6 +22,10 @@ namespace GettingRealNorden.ViewModels
         public DateTime Date { get { return newsletter.Date; } set { newsletter.Date = value; } }
         public string News { get { return newsletter.News; } set { newsletter.News = value; } }
 
+        public string CompanyName { get { return newsletter.CompanyName; } set { newsletter.CompanyName = value; } }
+
+        public int AdminId { get { return newsletter.AdminId; } set { newsletter.AdminId = value; } }
+
         public NewsletterViewModel(Newsletter newsletter)
         {
             this.newsletter = newsletter;

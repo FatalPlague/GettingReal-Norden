@@ -1,4 +1,5 @@
-﻿using GettingRealNorden.Models;
+﻿using GettingRealNorden.Commands;
+using GettingRealNorden.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace GettingRealNorden.ViewModels
 {
@@ -45,6 +47,21 @@ namespace GettingRealNorden.ViewModels
             SelectedNewsletter = NewsletterVMs[0];
         }
 
+        public void SaveNewsletters()
+        {
+            newsletterRepo.SaveNewsletters();
+        }
+        public void LoadNewsletters()
+        {
+            newsletterRepo.InitializeRepo();
+            NewsletterVMs.Clear();
+            foreach (Newsletter newsletter in newsletterRepo.GetAll())
+            {
+                NewsletterVMs.Add(new NewsletterViewModel(newsletter));
+            }
+            SelectedNewsletter = NewsletterVMs[0];
+        }
+
         //public Company GetCompany(string CompanyName)
         //{
         //    return companyRepo.GetCompanyByName(CompanyName);
@@ -54,6 +71,8 @@ namespace GettingRealNorden.ViewModels
         //{
         //    return adminRepo.GetAdminById(adminId);
         //}
+
+        public ICommand SaveNewsletterCommand { get; } = new SaveNewsletterCommand();
 
         public event PropertyChangedEventHandler? PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string? propertyName = null)
