@@ -34,6 +34,8 @@ namespace GettingRealNorden.ViewModels
 
         public ICommand SaveNewsletterCommand { get; } = new SaveNewsletterCommand();
 
+        public ICommand CreateNewNewsletterCommand { get; } = new CreateNewNewsletterCommand();
+
         public MainViewModel()
         {
             adminRepo = new AdminRepository("Resources/Admins.csv");
@@ -42,14 +44,12 @@ namespace GettingRealNorden.ViewModels
             
             NewsletterVMs = new ObservableCollection<NewsletterViewModel>();
 
-            //test
-            newsletterRepo.CreateNewsletter(new Company("Norden", "Danmark", "12345678", "http://googele.dk"), new Admin("Martin", "123456789", 1));
-
             foreach(Newsletter newsletter in newsletterRepo.GetAll())
             {
                 NewsletterVMs.Add(new NewsletterViewModel(newsletter));
             }
-            SelectedNewsletter = NewsletterVMs[0];
+            if (NewsletterVMs.Count > 0)
+                SelectedNewsletter = NewsletterVMs[NewsletterVMs.Count -1];
         }
 
         public void SaveNewsletters()
@@ -65,6 +65,11 @@ namespace GettingRealNorden.ViewModels
                 NewsletterVMs.Add(new NewsletterViewModel(newsletter));
             }
             SelectedNewsletter = NewsletterVMs[0];
+        }
+
+        public void CreateNewsLetter()
+        {
+            newsletterRepo.CreateNewsletter(new Company("Norden", "Danmark", "12345678", "http://Norden-odense.dk"), new Admin("Andreas", "123456789", 1));
         }
 
         //public Company GetCompany(string CompanyName)

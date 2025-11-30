@@ -16,6 +16,7 @@ namespace GettingRealNorden.Models
         {
             FileName = fileName;
             newsletters = new List<Newsletter>();
+            InitializeRepo();
 
         }
 
