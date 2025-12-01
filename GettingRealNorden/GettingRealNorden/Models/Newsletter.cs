@@ -64,7 +64,8 @@ namespace GettingRealNorden.Models
                 }  
         }
 
-        public Newsletter(string companyName, int adminId, int newsletterId, string news, string title, string imagePath, string newsLink)
+        public Newsletter(string companyName, int adminId, int newsletterId, 
+            string news, string title, string imagePath, string newsLink)
         {
             CompanyName = companyName;
             AdminId = adminId;
