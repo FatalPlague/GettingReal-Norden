@@ -64,12 +64,12 @@
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0">
                     <Image x:Name="img_NordenBanner"
-                           Source="C:\Users\jeppe\Desktop\Getting Real Projekt\NORDEN Odense banner.jpg"
+                           Source="/resources/NORDEN Odense banner.jpg"
                           Stretch="Fill"
                           HorizontalAlignment="Center"
                           VerticalAlignment="Center"
                           Height="157"
-                          Width="1000"/>
+                          Width="1000" IsEnabled="False"/>
 
                 </Grid>
 

@@ -12,6 +12,7 @@
     <None Remove="Resources\Admins.csv" />
     <None Remove="Resources\Companies.csv" />
     <None Remove="Resources\Newsletters.csv" />
+    <None Remove="Resources\NORDEN Odense banner.jpg" />
     <None Remove="Resources\Users.csv" />
   </ItemGroup>
 
@@ -25,6 +26,9 @@
     <Content Include="Resources\Newsletters.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Resources\NORDEN Odense banner.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Content Include="Resources\Users.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
