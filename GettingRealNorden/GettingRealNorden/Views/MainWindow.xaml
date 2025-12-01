@@ -44,7 +44,7 @@
                     <Button x:Name="btn_Members" Cursor="Hand" Content="MEDLEMMER" FontSize="20" FontFamily="Microsoft YaHei UI" Height="50" Width="200" BorderBrush="White" Background="LightBlue" Click="btn_Members_Click" />
                 </StackPanel>
                 <Button Content="Log Ud" Cursor="Hand" HorizontalAlignment="Left" Margin="20,0,0,0" Grid.Row="2" Foreground="#FF535353" VerticalAlignment="Center" FontWeight="bold" BorderThickness="2" Background="LightBlue" BorderBrush="LightBlue"/>
-                <Label Content="NORDEN Odense(Databind company name hertil)" HorizontalAlignment="Left" Margin="80,0,0,0" Grid.Row="2" VerticalAlignment="Center" FontWeight="ExtraBold" Foreground="white" FontStyle="Italic"/>
+                <Label Content="NORDEN Odense" HorizontalAlignment="Left" Margin="80,0,0,0" Grid.Row="2" VerticalAlignment="Center" FontWeight="ExtraBold" Foreground="white" FontStyle="Italic"/>
 
                 <!--<ListBox Grid.Row="0">
                 <ListBox.ItemTemplate>
