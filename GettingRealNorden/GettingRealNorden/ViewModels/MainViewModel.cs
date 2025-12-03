@@ -27,6 +27,7 @@ namespace GettingRealNorden.ViewModels
             {
                 selectedNewsletter = value;
                 OnPropertyChanged("SelectedNewsletter");
+                //selectedNewsletter = value;
             }
         }
 
@@ -34,7 +35,7 @@ namespace GettingRealNorden.ViewModels
 
         public ICommand SaveNewsletterCommand { get; } = new SaveNewsletterCommand();
 
-        public ICommand CreateNewNewsletterCommand { get; } = new CreateNewNewsletterCommand();
+        //public ICommand CreateNewNewsletterCommand { get; } = new CreateNewNewsletterCommand(); Er flyttet til code behind, da command blev udført efter knap tryk i codebehind.
 
         public MainViewModel()
         {
